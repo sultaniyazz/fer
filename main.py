@@ -2,20 +2,20 @@ import os
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# Environment Variable orqali TOKEN o'qing
-TOKEN = os.getenv("7661315158:AAG51v3_qmRTICKWOo3RMw3LjVwutoKz4Y0")
+# Environment Variable orqali TOKEN ni o'qing
+TOKEN = os.getenv("BOT_TOKEN")  # Bu yerda tokenni faqat Environment Variables orqali olish kerak
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Assalomu alaykum! Webhook rejimida ishlayapman!")
 
-# Webhook URL
-WEBHOOK_URL = "https://your-bot-url.onrender.com"
+# Webhook URL (Render URL-ni to'g'ri kiriting)
+WEBHOOK_URL = "https://your-bot-url.onrender.com"  # Bu URL Render.com’dagi haqiqiy URL bilan almashtiring
 
 def main():
-    # Application yarating
+    # Application yaratish
     app = Application.builder().token(TOKEN).build()
 
-    # /start komandasi uchun handler qo'shing
+    # /start komandasi uchun handler qo'shish
     app.add_handler(CommandHandler("start", start))
 
     # Webhook sozlang
