@@ -1,28 +1,21 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
+from telegram.ext import Application, CommandHandler, ContextTypes
 
-# Tokeningizni o'zgartiring
-TOKEN = '7661315158:AAG51v3_qmRTICKWOo3RMw3LjVwutoKz4Y0'
+# Telegram bot tokeningizni kiriting
+TOKEN = "7661315158:AAG51v3_qmRTICKWOo3RMw3LjVwutoKz4Y0"
 
-# /start komandasi uchun funksiyani yaratamiz
-def start(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('Salom, botga xush kelibsiz!')
+# /start komandasi uchun handler funksiyasi
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Assalomu alaykum! Xush kelibsiz!")
 
+# Botni yaratish
 def main():
-    # Updater ob'ekti yaratamiz
-    updater = Updater(TOKEN)
-    
-    # Dispatcher ni olish
-    dispatcher = updater.dispatcher
-    
-    # /start komandasini qo'shish
-    dispatcher.add_handler(CommandHandler("start", start))
-    
-    # Botni ishga tushuramiz
-    updater.start_polling()
-    
-    # Botni to'xtatish uchun
-    updater.idle()
+    app = Application.builder().token(TOKEN).build()
 
-if __name__ == '__main__':
+    app.add_handler(CommandHandler("start", start))
+
+    print("Bot ishlamoqda...")
+    app.run_polling()
+
+if __name__ == "__main__":
     main()
