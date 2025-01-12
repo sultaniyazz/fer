@@ -9,7 +9,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Assalomu alaykum! Webhook rejimida ishlayapman!")
 
 # Webhook URL (Render URL-ni to'g'ri kiriting)
-WEBHOOK_URL = "https://your-bot-url.onrender.com"  # Bu URL Render.com’dagi haqiqiy URL bilan almashtiring
+WEBHOOK_URL = "https://fer-rdk8.onrender.com"  # Bu URL Render.com’dagi haqiqiy URL bilan almashtiring
 
 def main():
     # Application yaratish
